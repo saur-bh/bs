@@ -10,7 +10,7 @@ ${drd_time_intervals}                   xpath=//android.view.View[@resource-id='
 ${drd_candle_types}                     xpath=//android.view.View[@resource-id='header-toolbar-chart-styles']
 ${drd_indicators}                       xpath=//android.view.View[@resource-id='header-toolbar-indicators']
 ${btn_logout_pincode}                   xpath=//android.widget.TextView[@text='Log Out']
-${btn_logout_on_modal_pincode}          xpath=(//android.widget.TextView[@text="Log Out"])[3]
+${btn_logout_on_modal_pincode}          xpath=(//android.widget.TextView[@text="Log Out"])[2]
 ${tab_trading_navigation_bar}           accessibility_id=Tab-Trading
 ${tab_derivatives_navigation_bar}       accessibility_id=Tab-Derivative
 ${tab_funding_navigation_bar}           accessibility_id=Tab-Funding

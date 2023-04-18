@@ -18,8 +18,12 @@ Open Apps
     ${app_path}    Set Variable If    '${ENV}' == 'production'    ${app_path}-prod    ${app_path}
     ${app_path}    Set Variable If    '${ENV}' == 'browserstack'    ${app_path}-browserstack    ${app_path}
     ${app_path}    Set Variable If    '${OS}' == 'android'    ${app_path}.apk    ${app_path}.app
-    Set To Dictionary    ${${DEVICE}}    noReset=${no_reset}    app=${app_path}
-    Open Application    ${REMOTE_URL}    &{${DEVICE}}
+    IF    '${ENV}'== 'browserstack' 
+         Open App On Browser Stack
+    ELSE
+        Set To Dictionary    ${${DEVICE}}    noReset=${no_reset}    app=${app_path}
+        Open Application    ${REMOTE_URL}    &{${DEVICE}}
+    END
     ${error_displays}    Is Element Visible    ${btn_close_app_on_error_popup}    timeout=5s
     Run Keyword If    ${error_displays}==${True}    Click Visible Element    ${btn_close_app_on_error_popup}
     ${first_time}    Is Element Visible    ${btn_close_tailored}    timeout=3s
@@ -27,7 +31,8 @@ Open Apps
 
 Open App On Browser Stack
     Set To Dictionary    ${${DEVICE}}    project=Bitfinex    build=4.4.0    name=mobile
-    Open Application    http://hub-cloud.browserstack.com/wd/hub    &{${DEVICE}}
+    Open Application    https://saurabhverma_EmRfyI:uyyMeMVb55sBqpgGPgFy@hub-cloud.browserstack.com/wd/hub  deviceName=Google Pixel 6 Pro    platformName=android    platformVersion=12.0   automationName=UiAutomator2   app=bs://8d70f7ab2475343ef746c3baeb689a75a0cd2b61 
+      
         
 Close Test Application
     Close All Applications

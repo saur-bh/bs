@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: execute tests
-        run: robot -v ENV:production -v OS:ANDROID -v DEVICE:NEXUS_5_ANDROID_12 --outputdir /Users/vuongvietvan/actions-runner/_work/bfxqa-robotframework/bfxqa-robotframework/reports /Users/vuongvietvan/Documents/GitHub/bfxqa-robotframework/e2e-tests/testcases/bitfinex/smoke/guest_user_test.robot
+        run:  robot -v ENV:production -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir reports  e2e-tests\testcases\bitfinex\smoke\guest_user_test.robot
       - name: Upload test results
         uses: actions/upload-artifact@v1
         if: always()
