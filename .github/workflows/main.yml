@@ -17,21 +17,19 @@ jobs:
         with:
           local-testing: start
           local-identifier: random
-      - name: install robot framework
-        run: pip3 install robotframework
-      - name: Install appium lib
-        run: pip3 install robotframework-appiumlibrary
-      - name: install request lib
-        run: pip3 install robotframework-requests
-      - name: Install google auth
-        run: pip3 install google-auth
+
   test:
     runs-on: ubuntu-latest
     steps:
-  
-      - name: Checkout
+      - name: Installing Framework
+        run: |
+          pip3 install robotframework
+          pip3 install robotframework-appiumlibrary
+          pip3 install robotframework-requests
+          pip3 install google-auth
+      - name: Checkout lastest repo
         uses: actions/checkout@v2
-      - name: execute tests
+      - name: executing testCases
         run: robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir reports  e2e-tests/testcases/bitfinex/smoke/guest_user_test.robot
       - name: Upload test results
         uses: actions/upload-artifact@v1
