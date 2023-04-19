@@ -1,27 +1,13 @@
 name: 'BrowserStack Test'
 on: [push, pull_request]
 jobs:
-  ubuntu-job:
-    name: 'BrowserStack Test on Ubuntu'
-    runs-on: ubuntu-latest  # Can be self-hosted runner also
+  test:
+    runs-on: ubuntu-latest
     steps:
-
-      - name: 'BrowserStack Env Setup'  # Invokes the setup-env action
-        uses: browserstack/github-actions/setup-env@master
-        with:
-          username:  ${{ secrets.BROWSERSTACK_USERNAME }}
-          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-
-      - name: 'BrowserStack Local Tunnel Setup'  # Invokes the setup-local action
-        uses: browserstack/github-actions/setup-local@master
-        with:
-          local-testing: start
-          local-identifier: random
       - name: Checkout
         uses: actions/checkout@v2
       - name: execute tests
-        run:  robot -v ENV:production -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir reports  e2e-tests\testcases\bitfinex\smoke\guest_user_test.robot
-      - name: Upload test results
+        run: robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir /reports e2e-tests/testcases/bitfinex/smoke/guest_user_test.robot
         uses: actions/upload-artifact@v1
         if: always()
         with:
@@ -30,7 +16,7 @@ jobs:
   generate_report:
     if: always()
     needs: [test]
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Download reports
@@ -38,6 +24,6 @@ jobs:
         with:
           name: reports
       - name: Send report to commit
-        uses: joonvena/robotframework-reporter-action@v2.1
+        uses: saur-bh/bs@v2.1
         with:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
