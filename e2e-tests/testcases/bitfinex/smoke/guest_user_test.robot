@@ -39,8 +39,3 @@ pay
     Tap Element By Label    Log In
     Tap Close Icon
     
-account
-    Tap On Navigation Tab By Name    Account
-    Tap Element By Label    Verification
-    Tap Element By Label    Sign Up
-    Tap Close Icon

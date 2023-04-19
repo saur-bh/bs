@@ -2,7 +2,7 @@ name: 'BrowserStack Test'
 on: [push, pull_request]
 jobs:
   ubuntu-job:
-    name: 'BrowserStack Test on Ubuntu'
+    name: 'TestMachine Setup'
     runs-on: ubuntu-latest  # Can be self-hosted runner also
     steps:
 
@@ -17,9 +17,6 @@ jobs:
         with:
           local-testing: start
           local-identifier: random
-  test:
-    runs-on: ubuntu-latest
-    steps:
       - name: install robot framework
         run: pip3 install robotframework
       - name: Install appium lib
@@ -28,6 +25,10 @@ jobs:
         run: pip3 install robotframework-requests
       - name: Install google auth
         run: pip3 install google-auth
+  test:
+    runs-on: ubuntu-latest
+    steps:
+  
       - name: Checkout
         uses: actions/checkout@v2
       - name: execute tests
