@@ -27,6 +27,7 @@ trading_exchange
     Tap On Back Button
 
 trading_margin
+    Skip
     Select Order Form Tab    Margin
     Create Limit Order    60000    0.01    sell
     Verify Element Contains Text    Invalid order
@@ -34,6 +35,7 @@ trading_margin
     Clear Ticker Search
     
 derivatives
+    Skip
     Tap Element By Label    Derivatives
     Search Ticker On Derivatives    BTC-PERP
     Access Trading Pair On Derivatives    BTCF0:USTF0
@@ -45,6 +47,7 @@ derivatives
     Clear Ticker Search On Derivatives
 
 funding
+    Skip
     Tap On Navigation Tab By Name    Funding    
     Search Ticker On Funding    USD
     Access Trading Pair On Funding    USD

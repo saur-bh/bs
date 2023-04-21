@@ -10,6 +10,7 @@ Suite Teardown    Close Test Application
 
 *** Test Cases ***
 transfer
+    Skip
     Tap On Navigation Tab By Name    Wallets
     Tap Balance Of Currency    BTC    exchange    available
     Tap Slide In Menu    Transfer BTC

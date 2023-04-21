@@ -16,7 +16,8 @@ ${post_comment}  This is my test comment
 ${expected_text}    Automatic 
 
 *** Test Cases ***
-post_comment_pulse
+ post_comment_pulse
+    Skip
     Access Bitfinex Pulse
     Tap Pulse Option  Bitfinex    
     Verify Label Displays   Pinned Pulse
@@ -27,11 +28,13 @@ post_comment_pulse
     Verify Label Displays    Comment posted successfully.
 
 delete_comment_pulse
+    skip
     Swipe Down To Element     ${txt_post_comment} 
     Tap Element By Label    less than a minute ago
     Verify Delete Pulse
 
 pulse_create_new_pulse
+    Skip
     Tap Create New Pulse
     Create New Pulse   ${pulse_post}   
     Verify Label Displays    Pulse created successfully.

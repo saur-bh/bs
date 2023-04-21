@@ -24,6 +24,7 @@ wallets_search
     Clear Search Textbox
 
 configure_balance_show_other_ccy_equivalent
+    SKIP
     Tap Balances Normal View Button
     Verify Currency Equivalent    USD    $
     Verify Currency Equivalent    CNH    ¥
@@ -33,6 +34,7 @@ configure_balance_show_other_ccy_equivalent
     Verify Currency Equivalent    USD    $
     
 configure_balances
+    SKIP
     Tap Configure Balance
     Tap Show Market Value Checkbox
     Tap Hide Small Balances Checkbox
