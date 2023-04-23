@@ -1,0 +1,1371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on darwin)" generated="20230423 19:59:20.856" rpa="false" schemaversion="3">
+<suite id="s1" name="Smoke" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke">
+<suite id="s1-s1" name="Account Top Menu Test" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/account_top_menu_test.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Login And Set Up Pin</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_KEY}</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_SECRET}</arg>
+<arg>Production</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:20.993" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:20.993" endtime="20230423 19:59:20.993"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:20.995" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:20.993" endtime="20230423 19:59:20.995"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:20.995" endtime="20230423 19:59:20.995"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:20.995" endtime="20230423 19:59:20.995"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:20.995" endtime="20230423 19:59:20.995"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:20.995" endtime="20230423 19:59:20.995"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:20.995" endtime="20230423 19:59:20.995"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:20.995" endtime="20230423 19:59:20.995"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:20.995" endtime="20230423 19:59:20.995"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:20.995" endtime="20230423 19:59:20.995"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:20.995" endtime="20230423 19:59:20.995"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:20.996" endtime="20230423 19:59:20.996"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:20.996" endtime="20230423 19:59:20.996"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:20.996" endtime="20230423 19:59:20.996"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:20.996" endtime="20230423 19:59:20.996"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:20.993" endtime="20230423 19:59:20.996"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:20.993" endtime="20230423 19:59:20.996"/>
+</kw>
+<test id="s1-s1-t1" name="lending_pro" line="33">
+<status status="FAIL" starttime="20230423 19:59:20.996" endtime="20230423 19:59:20.996">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s1-t2" name="verification" line="38">
+<status status="FAIL" starttime="20230423 19:59:20.996" endtime="20230423 19:59:20.996">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s1-t3" name="reports" line="43">
+<status status="FAIL" starttime="20230423 19:59:20.996" endtime="20230423 19:59:20.996">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s1-t4" name="borrow" line="48">
+<status status="FAIL" starttime="20230423 19:59:20.996" endtime="20230423 19:59:20.997">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s1-t5" name="leaderboard" line="53">
+<status status="FAIL" starttime="20230423 19:59:20.997" endtime="20230423 19:59:20.997">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s1-t6" name="affiliate_program" line="58">
+<status status="FAIL" starttime="20230423 19:59:20.997" endtime="20230423 19:59:20.997">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s1-t7" name="stake" line="63">
+<status status="FAIL" starttime="20230423 19:59:20.997" endtime="20230423 19:59:20.997">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:20.997" endtime="20230423 19:59:21.001"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:20.997" endtime="20230423 19:59:21.001"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:20.864" endtime="20230423 19:59:21.001">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<suite id="s1-s2" name="basic account created after 1March2022 smoke test" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/basic_account_created_after_1March2022_smoke_test.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Login And Set Up Pin</arg>
+<arg>${TEST_DATA_BASIC_VERIFIED_API_KEY}</arg>
+<arg>${TEST_DATA_BASIC_VERIFIED_API_SECRET}</arg>
+<arg>Production</arg>
+<arg>dismiss_verification=${True}</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:21.039" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:21.039" endtime="20230423 19:59:21.039"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:21.041" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:21.039" endtime="20230423 19:59:21.041"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.039" endtime="20230423 19:59:21.042"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.039" endtime="20230423 19:59:21.042"/>
+</kw>
+<test id="s1-s2-t1" name="trading" line="20">
+<status status="FAIL" starttime="20230423 19:59:21.042" endtime="20230423 19:59:21.042">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s2-t2" name="derivatives" line="27">
+<status status="FAIL" starttime="20230423 19:59:21.043" endtime="20230423 19:59:21.043">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s2-t3" name="funding" line="34">
+<status status="FAIL" starttime="20230423 19:59:21.043" endtime="20230423 19:59:21.043">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s2-t4" name="pay_btc" line="41">
+<status status="FAIL" starttime="20230423 19:59:21.043" endtime="20230423 19:59:21.043">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s2-t5" name="wallets" line="54">
+<status status="FAIL" starttime="20230423 19:59:21.043" endtime="20230423 19:59:21.043">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:21.043" endtime="20230423 19:59:21.048"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:21.043" endtime="20230423 19:59:21.048"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.002" endtime="20230423 19:59:21.048">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<suite id="s1-s3" name="Guest User Test" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/guest_user_test.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Logout And Select Server</arg>
+<arg>Production</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:21.058" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:21.058" endtime="20230423 19:59:21.058"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:21.059" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:21.058" endtime="20230423 19:59:21.059"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.059" endtime="20230423 19:59:21.059"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.060"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.058" endtime="20230423 19:59:21.060"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.058" endtime="20230423 19:59:21.060"/>
+</kw>
+<test id="s1-s3-t1" name="trading_exchange" line="13">
+<status status="FAIL" starttime="20230423 19:59:21.060" endtime="20230423 19:59:21.061">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s3-t2" name="funding" line="22">
+<status status="FAIL" starttime="20230423 19:59:21.061" endtime="20230423 19:59:21.061">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s3-t3" name="wallets" line="30">
+<status status="FAIL" starttime="20230423 19:59:21.061" endtime="20230423 19:59:21.061">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s3-t4" name="pay" line="36">
+<status status="FAIL" starttime="20230423 19:59:21.061" endtime="20230423 19:59:21.061">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s3-t5" name="account" line="42">
+<status status="FAIL" starttime="20230423 19:59:21.061" endtime="20230423 19:59:21.061">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:21.061" endtime="20230423 19:59:21.064"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:21.061" endtime="20230423 19:59:21.064"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.049" endtime="20230423 19:59:21.064">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<suite id="s1-s4" name="Pulse Comment Delete Create" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/pulse_comment_delete_create.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Login And Set Up Pin</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_KEY}</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_SECRET}</arg>
+<arg>production</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:21.077" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:21.077" endtime="20230423 19:59:21.077"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:21.078" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:21.077" endtime="20230423 19:59:21.078"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.078" endtime="20230423 19:59:21.078"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.078" endtime="20230423 19:59:21.078"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.078" endtime="20230423 19:59:21.078"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:21.078" endtime="20230423 19:59:21.078"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.078" endtime="20230423 19:59:21.078"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.078" endtime="20230423 19:59:21.079"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.079" endtime="20230423 19:59:21.079"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.078" endtime="20230423 19:59:21.079"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:21.078" endtime="20230423 19:59:21.079"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.079" endtime="20230423 19:59:21.079"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.079" endtime="20230423 19:59:21.079"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.079" endtime="20230423 19:59:21.079"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.079" endtime="20230423 19:59:21.079"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.077" endtime="20230423 19:59:21.079"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.077" endtime="20230423 19:59:21.079"/>
+</kw>
+<test id="s1-s4-t1" name=" post_comment_pulse" line="19">
+<status status="FAIL" starttime="20230423 19:59:21.079" endtime="20230423 19:59:21.079">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s4-t2" name="delete_comment_pulse" line="30">
+<status status="FAIL" starttime="20230423 19:59:21.079" endtime="20230423 19:59:21.079">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s4-t3" name="pulse_create_new_pulse" line="36">
+<status status="FAIL" starttime="20230423 19:59:21.080" endtime="20230423 19:59:21.080">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:21.080" endtime="20230423 19:59:21.083"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:21.080" endtime="20230423 19:59:21.083"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.065" endtime="20230423 19:59:21.083">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<suite id="s1-s5" name="Tickers Test" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/tickers_test.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Login And Set Up Pin</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_KEY}</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_SECRET}</arg>
+<arg>Production</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:21.091" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:21.091" endtime="20230423 19:59:21.091"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:21.092" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:21.091" endtime="20230423 19:59:21.093"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.093"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.091" endtime="20230423 19:59:21.093"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.091" endtime="20230423 19:59:21.093"/>
+</kw>
+<test id="s1-s5-t1" name="market_watch" line="12">
+<status status="FAIL" starttime="20230423 19:59:21.093" endtime="20230423 19:59:21.094">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:21.094" endtime="20230423 19:59:21.096"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:21.094" endtime="20230423 19:59:21.096"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.083" endtime="20230423 19:59:21.096">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<suite id="s1-s6" name="Trading Test" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/trading_test.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Login And Set Up Pin</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_KEY}</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_SECRET}</arg>
+<arg>Production</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:21.107" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:21.107" endtime="20230423 19:59:21.107"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:21.109" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:21.107" endtime="20230423 19:59:21.109"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.109" endtime="20230423 19:59:21.109"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.109" endtime="20230423 19:59:21.109"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.109" endtime="20230423 19:59:21.109"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:21.109" endtime="20230423 19:59:21.109"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.109" endtime="20230423 19:59:21.109"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.109" endtime="20230423 19:59:21.109"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.109" endtime="20230423 19:59:21.109"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.109" endtime="20230423 19:59:21.109"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:21.109" endtime="20230423 19:59:21.109"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.110" endtime="20230423 19:59:21.110"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.110" endtime="20230423 19:59:21.110"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.110" endtime="20230423 19:59:21.110"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.110" endtime="20230423 19:59:21.110"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.107" endtime="20230423 19:59:21.110"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.107" endtime="20230423 19:59:21.110"/>
+</kw>
+<test id="s1-s6-t1" name="trading_exchange" line="18">
+<status status="FAIL" starttime="20230423 19:59:21.110" endtime="20230423 19:59:21.110">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s6-t2" name="trading_margin" line="29">
+<status status="FAIL" starttime="20230423 19:59:21.110" endtime="20230423 19:59:21.110">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s6-t3" name="derivatives" line="37">
+<status status="FAIL" starttime="20230423 19:59:21.110" endtime="20230423 19:59:21.110">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s6-t4" name="funding" line="49">
+<status status="FAIL" starttime="20230423 19:59:21.111" endtime="20230423 19:59:21.111">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:21.111" endtime="20230423 19:59:21.115"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:21.111" endtime="20230423 19:59:21.115"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.096" endtime="20230423 19:59:21.115">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<suite id="s1-s7" name="Wallets Deposit V2 Cash Test" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/wallets_deposit_v2_cash_test.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Login And Set Up Pin</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_KEY}</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_SECRET}</arg>
+<arg>Production</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:21.125" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:21.125" endtime="20230423 19:59:21.125"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:21.126" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:21.125" endtime="20230423 19:59:21.126"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.126" endtime="20230423 19:59:21.126"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.126" endtime="20230423 19:59:21.126"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.126" endtime="20230423 19:59:21.126"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:21.126" endtime="20230423 19:59:21.126"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.126" endtime="20230423 19:59:21.126"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.126" endtime="20230423 19:59:21.126"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.126" endtime="20230423 19:59:21.126"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.126" endtime="20230423 19:59:21.126"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:21.126" endtime="20230423 19:59:21.126"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.127" endtime="20230423 19:59:21.127"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.127" endtime="20230423 19:59:21.127"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.127" endtime="20230423 19:59:21.127"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.127" endtime="20230423 19:59:21.127"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.125" endtime="20230423 19:59:21.127"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.125" endtime="20230423 19:59:21.127"/>
+</kw>
+<test id="s1-s7-t1" name="cash" line="12">
+<status status="FAIL" starttime="20230423 19:59:21.127" endtime="20230423 19:59:21.127">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:21.127" endtime="20230423 19:59:21.129"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:21.127" endtime="20230423 19:59:21.129"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.115" endtime="20230423 19:59:21.129">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<suite id="s1-s8" name="Wallets Deposit V2 Crypto Tether Test" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/wallets_deposit_v2_crypto_tether_test.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Login And Set Up Pin</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_KEY}</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_SECRET}</arg>
+<arg>Production</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:21.136" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:21.136" endtime="20230423 19:59:21.137"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:21.137" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:21.137" endtime="20230423 19:59:21.137"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.137" endtime="20230423 19:59:21.137"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.137" endtime="20230423 19:59:21.137"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.136" endtime="20230423 19:59:21.138"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.136" endtime="20230423 19:59:21.138"/>
+</kw>
+<test id="s1-s8-t1" name="crypto_search" line="11">
+<status status="FAIL" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s8-t2" name="crypto_btc" line="21">
+<status status="FAIL" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s8-t3" name="crypto_memo_eos" line="29">
+<status status="FAIL" starttime="20230423 19:59:21.138" endtime="20230423 19:59:21.138">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s8-t4" name="tether" line="37">
+<status status="FAIL" starttime="20230423 19:59:21.139" endtime="20230423 19:59:21.139">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s8-t5" name="crypto_lnbtc" line="45">
+<status status="FAIL" starttime="20230423 19:59:21.139" endtime="20230423 19:59:21.139">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s8-t6" name="crypto_no_margin_funding_currency" line="53">
+<status status="FAIL" starttime="20230423 19:59:21.139" endtime="20230423 19:59:21.139">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:21.139" endtime="20230423 19:59:21.141"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:21.139" endtime="20230423 19:59:21.141"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.129" endtime="20230423 19:59:21.141">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<suite id="s1-s9" name="Wallets Test" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/wallets_test.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Login And Set Up Pin</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_KEY}</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_SECRET}</arg>
+<arg>Production</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:21.149" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:21.149" endtime="20230423 19:59:21.149"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:21.150" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:21.149" endtime="20230423 19:59:21.150"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.149" endtime="20230423 19:59:21.151"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.149" endtime="20230423 19:59:21.151"/>
+</kw>
+<test id="s1-s9-t1" name="wallets_search" line="14">
+<status status="FAIL" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.151">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s9-t2" name="configure_balance_show_other_ccy_equivalent" line="26">
+<status status="FAIL" starttime="20230423 19:59:21.151" endtime="20230423 19:59:21.152">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<test id="s1-s9-t3" name="configure_balances" line="36">
+<status status="FAIL" starttime="20230423 19:59:21.152" endtime="20230423 19:59:21.152">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:21.152" endtime="20230423 19:59:21.155"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:21.152" endtime="20230423 19:59:21.155"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.141" endtime="20230423 19:59:21.155">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<suite id="s1-s10" name="Wallets Transfer Test" source="/Users/100rabh/Desktop/vv-code/bs/bs/e2e-tests/testcases/bitfinex/smoke/wallets_transfer_test.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Open Apps</arg>
+<arg>Bitfinex</arg>
+<arg>AND</arg>
+<arg>Login And Set Up Pin</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_KEY}</arg>
+<arg>${TEST_DATA_FULL_VERIFIED_API_SECRET}</arg>
+<arg>Production</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Open Apps" library="mobile_common">
+<arg>Bitfinex</arg>
+<kw name="Get Canonical Path" library="common">
+<var>${app_path}</var>
+<arg>/Users/100rabh/Desktop/vv-code/bs/bs/mobile/keywords/common/../../../app-path/${app}</arg>
+<msg timestamp="20230423 19:59:21.164" level="INFO">${app_path} = /Users/100rabh/Desktop/vv-code/bs/bs/app-path/Bitfinex</msg>
+<status status="PASS" starttime="20230423 19:59:21.164" endtime="20230423 19:59:21.164"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${OS}</var>
+<arg>${OS}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20230423 19:59:21.165" level="FAIL">Variable '${OS}' not found.</msg>
+<status status="FAIL" starttime="20230423 19:59:21.164" endtime="20230423 19:59:21.165"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'production'</arg>
+<arg>${app_path}-prod</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${ENV}' == 'browserstack'</arg>
+<arg>${app_path}-browserstack</arg>
+<arg>${app_path}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${app_path}</var>
+<arg>'${OS}' == 'android'</arg>
+<arg>${app_path}.apk</arg>
+<arg>${app_path}.app</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ENV}'== 'browserstack'">
+<kw name="Open App On Browser Stack" library="mobile_common">
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${${DEVICE}}</arg>
+<arg>noReset=${no_reset}</arg>
+<arg>app=${app_path}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>&amp;{${DEVICE}}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</branch>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</if>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${error_displays}</var>
+<arg>${btn_close_app_on_error_popup}</arg>
+<arg>timeout=5s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${error_displays}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_app_on_error_popup}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<kw name="Is Element Visible" library="mobile_common">
+<var>${first_time}</var>
+<arg>${btn_close_tailored}</arg>
+<arg>timeout=3s</arg>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${first_time}==${True}</arg>
+<arg>Click Visible Element</arg>
+<arg>${btn_close_tailored}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20230423 19:59:21.165" endtime="20230423 19:59:21.165"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.163" endtime="20230423 19:59:21.165"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.163" endtime="20230423 19:59:21.166"/>
+</kw>
+<test id="s1-s10-t1" name="transfer" line="12">
+<status status="FAIL" starttime="20230423 19:59:21.166" endtime="20230423 19:59:21.166">Parent suite setup failed:
+Variable '${OS}' not found.</status>
+</test>
+<kw name="Close Test Application" library="mobile_common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20230423 19:59:21.166" endtime="20230423 19:59:21.168"/>
+</kw>
+<status status="PASS" starttime="20230423 19:59:21.166" endtime="20230423 19:59:21.168"/>
+</kw>
+<status status="FAIL" starttime="20230423 19:59:21.155" endtime="20230423 19:59:21.168">Suite setup failed:
+Variable '${OS}' not found.</status>
+</suite>
+<status status="FAIL" starttime="20230423 19:59:20.857" endtime="20230423 19:59:21.169"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="36" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="36" skip="0" id="s1" name="Smoke">Smoke</stat>
+<stat pass="0" fail="7" skip="0" id="s1-s1" name="Account Top Menu Test">Smoke.Account Top Menu Test</stat>
+<stat pass="0" fail="5" skip="0" id="s1-s2" name="basic account created after 1March2022 smoke test">Smoke.basic account created after 1March2022 smoke test</stat>
+<stat pass="0" fail="5" skip="0" id="s1-s3" name="Guest User Test">Smoke.Guest User Test</stat>
+<stat pass="0" fail="3" skip="0" id="s1-s4" name="Pulse Comment Delete Create">Smoke.Pulse Comment Delete Create</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s5" name="Tickers Test">Smoke.Tickers Test</stat>
+<stat pass="0" fail="4" skip="0" id="s1-s6" name="Trading Test">Smoke.Trading Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s7" name="Wallets Deposit V2 Cash Test">Smoke.Wallets Deposit V2 Cash Test</stat>
+<stat pass="0" fail="6" skip="0" id="s1-s8" name="Wallets Deposit V2 Crypto Tether Test">Smoke.Wallets Deposit V2 Crypto Tether Test</stat>
+<stat pass="0" fail="3" skip="0" id="s1-s9" name="Wallets Test">Smoke.Wallets Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s10" name="Wallets Transfer Test">Smoke.Wallets Transfer Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
