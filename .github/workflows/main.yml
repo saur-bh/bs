@@ -33,10 +33,8 @@ jobs:
         run: |
           ssh-agent sh -c 'echo "${{ secrets.PRIVATE_REPOSITORY }}" | ssh-add - && git clone git@github.com:vuongvvv/bfxqa-robotframework.git'
           cd bfxqa-robotframework
-          ls -lart 
-          pwd
       - name: executing testCases
-        run: robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir ${{pwd}}/reports ${{pwd}}/e2e-tests/testcases/bitfinex/smoke/guest_user_test.robot  
+        run: robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir /home/runner/work/bs/bs/bfxqa-robotframework/reports /home/runner/work/bs/bs/bfxqa-robotframework/e2e-tests/testcases/bitfinex/smoke/guest_user_test.robot
       - name: Upload test results
         uses: actions/upload-artifact@v1
         if: always()
