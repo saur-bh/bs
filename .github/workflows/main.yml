@@ -29,10 +29,7 @@ jobs:
           pip3 install google-auth
           pip install onetimepass 
       - name: Check out my other private repo
-        uses: actions/checkout@v2
-        with:
-          repository: vuongvvv/bfxqa-robotframework
-          path : https://github.com/vuongvvv/bfxqa-robotframework.git
+        run: git clone  https://github.com/vuongvvv/bfxqa-robotframework.git
       - name: executing testCases
         run: robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir reports  e2e-tests/testcases/bitfinex/smoke
       - name: Upload test results
