@@ -49,7 +49,7 @@ jobs:
       - name: executing testCases
         run: robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir /home/runner/work/bs/bs/bfxqa-robotframework/reports /home/runner/work/bs/bs/bfxqa-robotframework/e2e-tests/testcases/bitfinex/smoke/guest_user_test.robot
 # Single deploy job since we're just deploying
-deploy:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
