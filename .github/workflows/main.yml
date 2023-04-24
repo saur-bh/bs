@@ -51,12 +51,10 @@ jobs:
           robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir /home/runner/work/bs/bs/bfxqa-robotframework/reports /home/runner/work/bs/bs/bfxqa-robotframework/e2e-tests/testcases/bitfinex/smoke/guest_user_test.robot
           cd /home/runner/work/bs/bs/bfxqa-robotframework
       - name: Add folder to git 
-        run: |
-            pwd
-            ls
-            cd bfxqa-robotframework
-            ssh-agent sh -c 'echo "${{ secrets.PRIVATE_REPOSITORY }}" | ssh-add - && git add -f /home/runner/work/bs/bs/bfxqa-robotframework/reports/output.xml /home/runner/work/bs/bs/bfxqa-robotframework/reports/log.html /home/runner/work/bs/bs/bfxqa-robotframework/reports/report.html'
-            git commit -m "added file"
-            git push origin main
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: reports
+          path: /home/runner/work/bs/bs/bfxqa-robotframework/reports   
 
         
