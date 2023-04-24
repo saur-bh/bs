@@ -1,6 +1,0 @@
-robotframework
-robotframework-seleniumlibrary
-robotframework-appiumlibrary
-robotframework-difflibrary
-robotframework-jsonlibrary
-robotframework-tidy
