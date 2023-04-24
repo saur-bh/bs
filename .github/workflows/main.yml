@@ -50,11 +50,20 @@ jobs:
         run: |
           robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir /home/runner/work/bs/bs/bfxqa-robotframework/reports /home/runner/work/bs/bs/bfxqa-robotframework/e2e-tests/testcases/bitfinex/smoke/guest_user_test.robot
           cd /home/runner/work/bs/bs/bfxqa-robotframework
-      - name: Add folder to git 
+      - name: upload testresult
         uses: actions/upload-artifact@v1
         if: always()
         with:
           name: reports
           path: /home/runner/work/bs/bs/bfxqa-robotframework/reports   
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-artifact@v1.0.8
+        with:
+        # Artifact name
+        name: # optional, default is github-pages
+        # Path of the directory containing the static assets.
+        path: /home/runner/work/bs/bs/bfxqa-robotframework/reports  
+        # Duration after which artifact will expire in days.
+        retention-days: # optional, default is 1
 
         
