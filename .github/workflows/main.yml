@@ -48,7 +48,7 @@ jobs:
           cd bfxqa-robotframework
       - name: executing testCases
         run: |
-          robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:REALME_M2101K7AI --outputdir /home/runner/work/bs/bs/bfxqa-robotframework/reports /home/runner/work/bs/bs/bfxqa-robotframework/e2e-tests/testcases/bitfinex/smoke
+          robot -v ENV:browserstack -v OS:ANDROID -v DEVICE:NEXUS_5_ANDROID_13 --outputdir /home/runner/work/bs/bs/bfxqa-robotframework/reports /home/runner/work/bs/bs/bfxqa-robotframework/e2e-tests/testcases/bitfinex/smoke
           cd /home/runner/work/bs/bs/bfxqa-robotframework
       - name: upload testresult
         uses: actions/upload-artifact@v1
